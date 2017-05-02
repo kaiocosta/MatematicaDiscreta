@@ -84,6 +84,22 @@ public class Operacoes {
         return uniao;
     }
     
+    public static ArrayList<String> produtoCartesiano(Conjunto conjunto1, Conjunto conjunto2){
+        ArrayList<String> produtoCartesiano = new ArrayList<String>();
+        StringBuilder sb = new StringBuilder();
+        for(Elemento elemento1 : conjunto1.getConjunto()){
+            for(Elemento elemento2 : conjunto2.getConjunto()){
+                sb.append("{");
+                sb.append(Integer.toString(elemento1.getValor()));
+                sb.append(",");
+                sb.append(Integer.toString(elemento2.getValor()));
+                sb.append("}");
+                produtoCartesiano.add(sb.toString());
+            }  
+        }
+        return produtoCartesiano;
+        }
+    
 }
     
     
