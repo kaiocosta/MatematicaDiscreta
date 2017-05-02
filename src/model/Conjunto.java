@@ -8,7 +8,7 @@ import model.Elemento;
 public class Conjunto {
 	private String nome;
 	private List<Elemento> conjunto = new ArrayList<Elemento>();
-
+        
     public String getNome() {
         return nome;
     }

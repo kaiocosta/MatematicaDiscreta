@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -20,7 +21,7 @@ public class TrabalhoMatematica {
 
 	public static String conjunto = "([A-Z][\" \"]*[\"=\"][\" \"]*[\"{\"][0-9,]*[\"}\"])";
 	public static String elemento = "([a-z][\" \"]*[\"=\"][\" \"]*[0-9]*)";
-        public static String  numero = "[0-9]*";
+        public static String numero = "[0-9]*";
         public static String nomeConjunto = "[A-Z]";
         public static String nomeElemento = "[a-z]";
 
@@ -39,7 +40,8 @@ public class TrabalhoMatematica {
             if(sas.matches(conjunto)){
             	retiraNumerosTxt(sas);
                 retiraNomeTxt(sas);
-              System.out.println("sim" );  
+                System.out.println(sas);
+
             }else{
               System.out.println("nao"); 
             }
