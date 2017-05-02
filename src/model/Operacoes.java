@@ -1,0 +1,92 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Damasceno
+ */
+public class Operacoes {
+    
+    public static boolean pertence(int valor,Conjunto conjunto){
+        if(conjunto.getConjunto().indexOf(valor) != -1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public static boolean contido(Conjunto conjunto1, Conjunto conjunto2){
+        int contador1 = 0;
+        int contador2 = 0;
+        for(Elemento elemento1 : conjunto1.getConjunto()){
+            if(pertence(elemento1.getValor(), conjunto2)){
+                contador1++;
+            }
+        }
+        for(Elemento elemento2 : conjunto2.getConjunto()){
+            if(pertence(elemento2.getValor(), conjunto1)){
+                contador1++;
+            }
+        }
+        if(contador1 == conjunto1.getConjunto().size() && contador2 == conjunto2.getConjunto().size() ){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    
+    public static boolean contidoPropriamente(Conjunto conjunto1, Conjunto conjunto2){
+        int contador = 0;
+        for(Elemento elemento1 : conjunto1.getConjunto()){
+            if(pertence(elemento1.getValor(), conjunto2)){
+                contador++;
+            }
+        }
+        if(contador == conjunto2.getConjunto().size()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public static Conjunto intersecao(Conjunto conjunto1, Conjunto conjunto2){
+        Conjunto intersecao = new Conjunto();
+        intersecao.setNome(conjunto1.getNome() + " ∩ " + conjunto1.getNome());
+        for(Elemento valores1 : conjunto1.getConjunto()){
+            for(Elemento valores2 : conjunto2.getConjunto()){
+                if(valores1.getValor() == valores2.getValor()){
+                    intersecao.adicionarElemento(valores1);
+                }
+
+            }   
+        }
+        return intersecao;
+    }
+    
+    public static Conjunto uniao(Conjunto conjunto1, Conjunto conjunto2){
+        Conjunto uniao = new Conjunto();
+        uniao.setNome(conjunto1.getNome() + " ∪ " + conjunto1.getNome());
+        for(Elemento elemento1 : conjunto1.getConjunto()){
+            uniao.adicionarElemento(elemento1);
+        }
+        for(Elemento elemento2 : conjunto2.getConjunto()){
+            if(uniao.getConjunto().indexOf(elemento2) == -1){
+                uniao.adicionarElemento(elemento2);
+            }
+        }
+        return uniao;
+    }
+    
+}
+    
+    
+    
+    
+   

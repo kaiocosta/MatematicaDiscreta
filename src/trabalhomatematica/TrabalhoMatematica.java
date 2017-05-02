@@ -14,18 +14,22 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author Damasceno
+ * @author Damaceno
  */
 public class TrabalhoMatematica {
 
-    /**
+	public static String conjunto = "([A-Z][\" \"]*[\"=\"][\" \"]*[\"{\"][0-9,]*[\"}\"])";
+	public static String elemento = "([a-z][\" \"]*[\"=\"][\" \"]*[0-9]*)";
+        public static String  numero = "[0-9]*";
+        public static String nomeConjunto = "[A-Z]";
+        public static String nomeElemento = "[a-z]";
+
+	/**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException {
         
-        String conjunto = "([A-Z][\" \"]*[\"=\"][\" \"]*[\"{\"][0-9,]*[\"}\"])";
-        String elemento = "([a-z][\" \"]*[\"=\"][\" \"]*[0-9]*)";
-        String numero = "[0-9]*";
+        
         Pattern conjuntoPattern = Pattern.compile(conjunto);
         ArrayList<ArrayList<Integer>> conjuntos = new ArrayList<ArrayList<Integer>>();
         
@@ -33,19 +37,36 @@ public class TrabalhoMatematica {
         while(s.hasNextLine()){
             String sas = s.nextLine();
             if(sas.matches(conjunto)){
-               for(int i = 0; i < sas.length(); i++) { 
-                    
-                   
-               }
-               
-             
+            	retiraNumerosTxt(sas);
+                retiraNomeTxt(sas);
               System.out.println("sim" );  
             }else{
               System.out.println("nao"); 
             }
               
-        }
-        
+        }   
+    }
+    
+    public static int retiraNumerosTxt(String linha){
+        int val = 0;
+    	for(int i = 0; i < linha.length(); i++) { 
+            String teste = Character.toString(linha.charAt(i));
+            if(teste.matches(numero)){
+            	val = Integer.parseInt(teste);
+            }
+       }
+        return val;
+    }
+    
+    public static String retiraNomeTxt(String linha){
+        String nome = "";
+        for(int i = 0; i < linha.length(); i++) { 
+            String teste = Character.toString(linha.charAt(i));
+            if(teste.matches(nomeConjunto) || teste.matches(nomeElemento)){
+            	nome = teste;
+            }
+       }
+        return nome;
         
     }
     
