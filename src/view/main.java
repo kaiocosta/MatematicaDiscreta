@@ -82,16 +82,16 @@ public class main extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
+        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 86, 380, 120));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 86, 380, 150));
 
         jButton1.setText("Pertence");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -142,21 +142,22 @@ public class main extends javax.swing.JFrame {
     private void abrirArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirArquivoActionPerformed
         Pattern conjuntoPattern = Pattern.compile(conjunto);
         ArrayList<ArrayList<Integer>> conjuntos = new ArrayList<ArrayList<Integer>>();
-        Conjunto nome = null;
+       
         
         Scanner s = null;
         try {
             
-//             File fileLer = null;
-//        JFileChooser arquivo = new JFileChooser();
-//        FileNameExtensionFilter filtroTxt = new FileNameExtensionFilter("Arquivos TXT", "txt");
-//        arquivo.addChoosableFileFilter(filtroTxt);
-//        arquivo.setAcceptAllFileFilterUsed(false);
-//        if (arquivo.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-//            fileLer = new File(arquivo.getSelectedFile().getAbsolutePath());
-//        }
-//          s = new Scanner(fileLer);  
-            s = new Scanner(new File("teste.txt"));
+             File fileLer = null;
+        JFileChooser arquivo = new JFileChooser();
+        FileNameExtensionFilter filtroTxt = new FileNameExtensionFilter("Arquivos TXT", "txt");
+        arquivo.addChoosableFileFilter(filtroTxt);
+        arquivo.setAcceptAllFileFilterUsed(false);
+        if (arquivo.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            fileLer = new File(arquivo.getSelectedFile().getAbsolutePath());
+        }
+          s = new Scanner(fileLer);
+          jTextArea1.setText("");
+//            s = new Scanner(new File("teste.txt"));
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
@@ -169,6 +170,8 @@ public class main extends javax.swing.JFrame {
                 retiraNomeTxt(sas);
                 System.out.println(sas);
                 jTextArea1.replaceSelection(sas + "\n");
+                
+                
             }else{
               System.out.println("nao"); 
             }

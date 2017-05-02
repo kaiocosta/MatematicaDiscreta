@@ -1,0 +1,8 @@
+P = {4,8,12,16}
+A = {3,7,11,15}
+
+P sao os times do estado de Pernambuco
+A sao os times do estado do Para
+
+P X A
+P produto cartesiano com A
