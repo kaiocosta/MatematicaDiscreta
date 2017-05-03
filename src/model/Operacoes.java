@@ -59,7 +59,7 @@ public class Operacoes {
     
     public static Conjunto intersecao(Conjunto conjunto1, Conjunto conjunto2){
         Conjunto intersecao = new Conjunto();
-        intersecao.setNome(conjunto1.getNome() + " ∩ " + conjunto1.getNome());
+        intersecao.setNome(conjunto1.getNome() + " ∩ " + conjunto2.getNome());
         for(Elemento valores1 : conjunto1.getConjunto()){
             for(Elemento valores2 : conjunto2.getConjunto()){
                 if(valores1.getValor() == valores2.getValor()){

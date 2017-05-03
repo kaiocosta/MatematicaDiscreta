@@ -165,11 +165,9 @@ public class main extends javax.swing.JFrame {
             String sas = s.nextLine();
             if(sas.matches(conjunto)){
                 conjuntos.add(new Conjunto(retiraNomeTxt(sas),retiraNumerosTxt(sas))); 
-                System.out.println(conjuntos);  
                 jTextArea1.replaceSelection(sas + "\n");    
             }else if(sas.matches(elemento)){
                 elementos.add(new Elemento(retiraNomeTxt(sas),retiraNumeroTxt(sas).getValor()));
-                System.out.println(elementos);  
                 jTextArea1.replaceSelection(sas + "\n"); 
             }            
         }   
