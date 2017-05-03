@@ -32,7 +32,7 @@ public class Operacoes {
         }
         for(Elemento elemento2 : conjunto2.getConjunto()){
             if(pertence(elemento2.getValor(), conjunto1)){
-                contador1++;
+                contador2++;
             }
         }
         if(contador1 == conjunto1.getConjunto().size() && contador2 == conjunto2.getConjunto().size() ){
@@ -50,7 +50,7 @@ public class Operacoes {
                 contador++;
             }
         }
-        if(contador == conjunto2.getConjunto().size()){
+        if(contador == conjunto1.getConjunto().size()){
             return true;
         }else{
             return false;

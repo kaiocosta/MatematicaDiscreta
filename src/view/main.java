@@ -52,17 +52,12 @@ public class main extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         abrirArquivo = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         pertence = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        contido = new javax.swing.JButton();
+        contidoPropriamente = new javax.swing.JButton();
         uniao = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         produtoCartesiano = new javax.swing.JButton();
@@ -81,17 +76,6 @@ public class main extends javax.swing.JFrame {
             }
         });
         getContentPane().add(abrirArquivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 53, 190, 30));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -113,25 +97,21 @@ public class main extends javax.swing.JFrame {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 390, 30));
 
-        jButton2.setText("Não Pertence");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        contido.setText("Contido ou igual");
+        contido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                contidoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 100, -1));
+        getContentPane().add(contido, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 130, -1));
 
-        jButton3.setText("Contido ou igual");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 130, -1));
-
-        jButton4.setText("Não contido ou igual");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 130, -1));
-
-        jButton5.setText("Contido propriamente");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 160, -1));
-
-        jButton6.setText("Não contido propriamente");
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, -1, -1));
+        contidoPropriamente.setText("Contido propriamente");
+        contidoPropriamente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contidoPropriamenteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(contidoPropriamente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 160, -1));
 
         uniao.setText("União");
         uniao.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +122,11 @@ public class main extends javax.swing.JFrame {
         getContentPane().add(uniao, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 100, -1));
 
         jButton8.setText("Interseção");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 130, -1));
 
         produtoCartesiano.setText("Produto Cartesiano");
@@ -190,14 +175,6 @@ public class main extends javax.swing.JFrame {
         }   
     }//GEN-LAST:event_abrirArquivoActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void pertenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pertenceActionPerformed
         if(elementos.size() < 1 || conjuntos.size() < 1){
             JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
@@ -236,6 +213,34 @@ public class main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_uniaoActionPerformed
 
+    private void contidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contidoActionPerformed
+        if(conjuntos.size() < 2){
+            JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
+        }else{
+            if(Operacoes.contido(conjuntos.get(0), conjuntos.get(1))){
+                jTextArea1.replaceSelection("O conjunto "+ conjuntos.get(0).getNome()+" esta contido no conjunto "+ conjuntos.get(1).getNome()+ "\n");
+            }else{
+                jTextArea1.replaceSelection("O conjunto "+ conjuntos.get(0).getNome()+" nao esta contido no conjunto "+ conjuntos.get(1).getNome()+ "\n");
+            } 
+        }
+    }//GEN-LAST:event_contidoActionPerformed
+
+    private void contidoPropriamenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contidoPropriamenteActionPerformed
+        if(conjuntos.size() < 2){
+            JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
+        }else{
+            if(Operacoes.contidoPropriamente(conjuntos.get(0), conjuntos.get(1))){
+                jTextArea1.replaceSelection("O conjunto "+ conjuntos.get(0).getNome()+" esta contido propriamente no conjunto "+ conjuntos.get(1).getNome()+ "\n");
+            }else{
+                jTextArea1.replaceSelection("O conjunto "+ conjuntos.get(0).getNome()+" nao esta contido propriamente no conjunto "+ conjuntos.get(1).getNome()+ "\n");
+            } 
+        }
+    }//GEN-LAST:event_contidoPropriamenteActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -273,14 +278,9 @@ public class main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abrirArquivo;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton contido;
+    private javax.swing.JButton contidoPropriamente;
     private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
