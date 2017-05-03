@@ -59,7 +59,7 @@ public class main extends javax.swing.JFrame {
         contido = new javax.swing.JButton();
         contidoPropriamente = new javax.swing.JButton();
         uniao = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        intersecao = new javax.swing.JButton();
         produtoCartesiano = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,7 +81,7 @@ public class main extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 86, 380, 150));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 86, 380, 170));
 
         pertence.setText("Pertence");
         pertence.addActionListener(new java.awt.event.ActionListener() {
@@ -121,13 +121,13 @@ public class main extends javax.swing.JFrame {
         });
         getContentPane().add(uniao, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 100, -1));
 
-        jButton8.setText("Interseção");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        intersecao.setText("Interseção");
+        intersecao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                intersecaoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 130, -1));
+        getContentPane().add(intersecao, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 130, -1));
 
         produtoCartesiano.setText("Produto Cartesiano");
         produtoCartesiano.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +176,7 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_abrirArquivoActionPerformed
 
     private void pertenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pertenceActionPerformed
-        if(elementos.size() < 1 || conjuntos.size() < 1){
+        if(elementos.size() < 1 && conjuntos.size() < 1){
             JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
         }else{
             for(int i = 0 ; i < elementos.size(); i++){
@@ -237,9 +237,19 @@ public class main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_contidoPropriamenteActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void intersecaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intersecaoActionPerformed
+        if(conjuntos.size() < 2){
+            JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
+        }else{
+            for(int i = 0; i < conjuntos.size(); i++){
+              for(int j = 0; j < conjuntos.size(); j++){
+                  jTextArea1.replaceSelection(Operacoes.intersecao(conjuntos.get(i), conjuntos.get(j)).getNome()+" : "+ Operacoes.imprimiConjunto(Operacoes.intersecao(conjuntos.get(i), conjuntos.get(j))) + "\n");
+              }
+            }
+         
+        }
+        
+    }//GEN-LAST:event_intersecaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,7 +290,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton abrirArquivo;
     private javax.swing.JButton contido;
     private javax.swing.JButton contidoPropriamente;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton intersecao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
