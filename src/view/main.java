@@ -17,9 +17,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Conjunto;
+import model.Elemento;
+import model.Operacoes;
 import trabalhomatematica.TrabalhoMatematica;
 import static trabalhomatematica.TrabalhoMatematica.conjunto;
+import static trabalhomatematica.TrabalhoMatematica.elemento;
 import static trabalhomatematica.TrabalhoMatematica.retiraNomeTxt;
+import static trabalhomatematica.TrabalhoMatematica.retiraNumeroTxt;
 import static trabalhomatematica.TrabalhoMatematica.retiraNumerosTxt;
 
 /**
@@ -28,6 +32,8 @@ import static trabalhomatematica.TrabalhoMatematica.retiraNumerosTxt;
  */
 public class main extends javax.swing.JFrame {
 
+    ArrayList<Conjunto> conjuntos = new ArrayList<Conjunto>();
+    ArrayList<Elemento> elementos = new ArrayList<Elemento>();
     /**
      * Creates new form main
      */
@@ -50,16 +56,16 @@ public class main extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        pertence = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        uniao = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        produtoCartesiano = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,13 +99,13 @@ public class main extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 86, 380, 150));
 
-        jButton1.setText("Pertence");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pertence.setText("Pertence");
+        pertence.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                pertenceActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 100, -1));
+        getContentPane().add(pertence, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 100, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -127,23 +133,30 @@ public class main extends javax.swing.JFrame {
         jButton6.setText("Não contido propriamente");
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, -1, -1));
 
-        jButton7.setText("União");
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 100, -1));
+        uniao.setText("União");
+        uniao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uniaoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(uniao, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 100, -1));
 
         jButton8.setText("Interseção");
         getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 130, -1));
 
-        jButton9.setText("Produto Cartesiano");
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 160, -1));
+        produtoCartesiano.setText("Produto Cartesiano");
+        produtoCartesiano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                produtoCartesianoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(produtoCartesiano, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 160, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void abrirArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirArquivoActionPerformed
-        Pattern conjuntoPattern = Pattern.compile(conjunto);
-        ArrayList<ArrayList<Integer>> conjuntos = new ArrayList<ArrayList<Integer>>();
-       
-        
+ 
         Scanner s = null;
         try {
             
@@ -166,16 +179,14 @@ public class main extends javax.swing.JFrame {
         while(s.hasNextLine()){
             String sas = s.nextLine();
             if(sas.matches(conjunto)){
-            	retiraNumerosTxt(sas);
-                retiraNomeTxt(sas);
-                System.out.println(sas);
-                jTextArea1.replaceSelection(sas + "\n");
-                
-                
-            }else{
-              System.out.println("nao"); 
-            }
-              
+                conjuntos.add(new Conjunto(retiraNomeTxt(sas),retiraNumerosTxt(sas))); 
+                System.out.println(conjuntos);  
+                jTextArea1.replaceSelection(sas + "\n");    
+            }else if(sas.matches(elemento)){
+                elementos.add(new Elemento(retiraNomeTxt(sas),retiraNumeroTxt(sas).getValor()));
+                System.out.println(elementos);  
+                jTextArea1.replaceSelection(sas + "\n"); 
+            }            
         }   
     }//GEN-LAST:event_abrirArquivoActionPerformed
 
@@ -187,9 +198,43 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void pertenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pertenceActionPerformed
+        if(elementos.size() < 1 || conjuntos.size() < 1){
+            JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
+        }else{
+            for(int i = 0 ; i < elementos.size(); i++){
+                if(Operacoes.pertence(elementos.get(i).getValor(), conjuntos.get(0)) == true){
+                  jTextArea1.replaceSelection("O elemento "+elementos.get(i).getNome()+" pertence ao conjunto "+ conjuntos.get(0).getNome()+ "\n");
+                }else{
+                  jTextArea1.replaceSelection("O elemento "+elementos.get(i).getNome()+" nao pertence ao conjunto "+ conjuntos.get(0).getNome()+ "\n");
+                }
+            }           
+        }
+    }//GEN-LAST:event_pertenceActionPerformed
+
+    private void produtoCartesianoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produtoCartesianoActionPerformed
+        if(conjuntos.size() < 2){
+            JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
+        }else{
+            jTextArea1.replaceSelection("O produto Cartesiano dos conjuntos "+ conjuntos.get(0).getNome()+ " e "+ conjuntos.get(1).getNome()+" "+ Operacoes.produtoCartesiano(conjuntos.get(0), conjuntos.get(1)));
+            //Operacoes.produtoCartesiano(conjuntos.get(0), conjuntos.get(1));
+            //jTextArea1.replaceSelection("O elemento"+elementos.get(0).getNome()+"pertence ao conjunto "+ conjuntos.get(0).getNome()+ "\n");
+         
+        }
+    }//GEN-LAST:event_produtoCartesianoActionPerformed
+
+    private void uniaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uniaoActionPerformed
+        if(conjuntos.size() < 2){
+            JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
+        }else{
+            for(int i = 0; i < conjuntos.size(); i++){
+              for(int j = 0; j < conjuntos.size(); j++){
+                  jTextArea1.replaceSelection(Operacoes.uniao(conjuntos.get(i), conjuntos.get(j)).getNome()+" : "+ Operacoes.imprimiConjunto(Operacoes.uniao(conjuntos.get(i), conjuntos.get(j))) + "\n");
+              }
+            }
+         
+        }
+    }//GEN-LAST:event_uniaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,20 +273,20 @@ public class main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abrirArquivo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton pertence;
+    private javax.swing.JButton produtoCartesiano;
+    private javax.swing.JButton uniao;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,11 +14,12 @@ import java.util.ArrayList;
 public class Operacoes {
     
     public static boolean pertence(int valor,Conjunto conjunto){
-        if(conjunto.getConjunto().indexOf(valor) != -1){
-            return true;
-        }else{
-            return false;
+        for(Elemento elementos : conjunto.getConjunto()){
+            if(valor == elementos.getValor()){
+                return true;
+            }   
         }
+        return false;
     }
     
     public static boolean contido(Conjunto conjunto1, Conjunto conjunto2){
@@ -72,7 +73,7 @@ public class Operacoes {
     
     public static Conjunto uniao(Conjunto conjunto1, Conjunto conjunto2){
         Conjunto uniao = new Conjunto();
-        uniao.setNome(conjunto1.getNome() + " ∪ " + conjunto1.getNome());
+        uniao.setNome(conjunto1.getNome() + " ∪ " + conjunto2.getNome());
         for(Elemento elemento1 : conjunto1.getConjunto()){
             uniao.adicionarElemento(elemento1);
         }
@@ -86,19 +87,33 @@ public class Operacoes {
     
     public static ArrayList<String> produtoCartesiano(Conjunto conjunto1, Conjunto conjunto2){
         ArrayList<String> produtoCartesiano = new ArrayList<String>();
-        StringBuilder sb = new StringBuilder();
         for(Elemento elemento1 : conjunto1.getConjunto()){
             for(Elemento elemento2 : conjunto2.getConjunto()){
+                StringBuilder sb = new StringBuilder();
                 sb.append("{");
                 sb.append(Integer.toString(elemento1.getValor()));
                 sb.append(",");
                 sb.append(Integer.toString(elemento2.getValor()));
                 sb.append("}");
                 produtoCartesiano.add(sb.toString());
+                sb.reverse();
             }  
         }
         return produtoCartesiano;
         }
+    
+    public static String imprimiConjunto(Conjunto conjunto){
+        String conj = "";
+        conj += "{ ";
+            for(Elemento ele : conjunto.getConjunto()){
+                conj += ele.getValor();
+                if(conjunto.getConjunto().indexOf(ele) != conjunto.getConjunto().size()-1){
+                 conj += ",";
+                }     
+            }
+        conj += " }";
+        return conj;
+    }
     
 }
     

@@ -7,25 +7,40 @@ import model.Elemento;
 
 public class Conjunto {
 	private String nome;
-	private List<Elemento> conjunto = new ArrayList<Elemento>();
+	private ArrayList<Elemento> conjunto = new ArrayList<Elemento>();
         
     public String getNome() {
         return nome;
+    }
+
+    public Conjunto(String nome) {
+        this.nome = nome;
+    }
+    
+    public Conjunto(String nome,ArrayList<Elemento> elementos) {
+        this.nome = nome;
+        this.conjunto = elementos;
+    }
+    
+    public Conjunto(){
+    
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    public void setConjunto(List<Elemento> conjunto) {
+    public void setConjunto(ArrayList<Elemento> conjunto) {
         this.conjunto = conjunto;
     }
 
-    public List<Elemento> getConjunto() {
+    public ArrayList<Elemento> getConjunto() {
         return conjunto;
     }
     
     public void adicionarElemento(Elemento valor){
         this.conjunto.add(valor); 
     }
+    
+    
 }

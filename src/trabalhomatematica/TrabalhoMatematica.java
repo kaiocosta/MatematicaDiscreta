@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import javax.swing.JTextArea;
+import model.Elemento;
 
 /**
  *
@@ -49,15 +50,37 @@ public class TrabalhoMatematica {
         }   
     }
     
-    public static int retiraNumerosTxt(String linha){
-        int val = 0;
+    public static ArrayList<Elemento> retiraNumerosTxt(String linha){
+        ArrayList<Elemento> conjunto = new ArrayList<Elemento>();
+        StringBuilder sb = new StringBuilder();
     	for(int i = 0; i < linha.length(); i++) { 
             String teste = Character.toString(linha.charAt(i));
             if(teste.matches(numero)){
-            	val = Integer.parseInt(teste);
+                sb.append(teste);   
+            }else if(sb.length() > 0){
+                Elemento valor = new Elemento();
+                valor.setNome(" ");
+                valor.setValor(Integer.parseInt(sb.toString()));
+            	conjunto.add(valor);
+                sb.setLength(0);
             }
        }
-        return val;
+       return conjunto;
+    }
+    
+    public static Elemento retiraNumeroTxt(String linha){
+        Elemento valor = new Elemento();
+        StringBuilder sb = new StringBuilder();
+    	for(int i = 0; i < linha.length(); i++) { 
+            String teste = Character.toString(linha.charAt(i));
+            if(teste.matches(numero)){
+                sb.append(teste);
+            }
+       }
+        valor.setNome(" ");
+        valor.setValor(Integer.parseInt(sb.toString()));
+        sb.setLength(0);
+       return valor;
     }
     
     public static String retiraNomeTxt(String linha){

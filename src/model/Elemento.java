@@ -7,6 +7,16 @@ public class Elemento {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
+    public Elemento(){
+    
+    }
+    
+    public Elemento(String nome, int val){
+        this.nome = nome;
+        this.valor = val;
+    
+    }
 
     public void setValor(int valor) {
         this.valor = valor;
