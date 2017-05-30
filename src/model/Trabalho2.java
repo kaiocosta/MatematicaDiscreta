@@ -21,12 +21,12 @@ public class Trabalho2 {
         matriz=new int[linha][coluna];
 
         for(int i=0;i<conjuntos.get(0).getConjunto().size();i++){
-            int eleConj1 = conjuntos.get(0).getConjunto().get(i);
+            int eleConj1 = conjuntos.get(0).getConjunto().get(i).getValor();
             conj1.add(eleConj1);
         }
 
         for(int j=0;j<conjuntos.get(1).getConjunto().size();j++){
-            int eleConj2 = conjuntos.get(1).getConjunto().get(j);
+            int eleConj2 = conjuntos.get(1).getConjunto().get(j).getValor();
             conj2.add(eleConj2);
         }
 
@@ -55,13 +55,13 @@ public class Trabalho2 {
 
         for(int i=0;i<conjuntos.get(0).getConjunto().size();i++){
 
-            int eleConj1 = conjuntos.get(0).getConjunto().get(i);
+            int eleConj1 = conjuntos.get(0).getConjunto().get(i).getValor();
             conj1.add(eleConj1);
         }
 
         for(int j=0;j<conjuntos.get(1).getConjunto().size();j++){
 
-            int eleConj2 = conjuntos.get(1).getConjunto().get(j);
+            int eleConj2 = conjuntos.get(1).getConjunto().get(j).getValor();
             conj2.add(eleConj2);
         }
 
@@ -90,13 +90,13 @@ public class Trabalho2 {
 
             for(int i=0;i<conjuntos.get(0).getConjunto().size();i++){
 
-                int eleConj1 = conjuntos.get(0).getConjunto().get(i);
+                int eleConj1 = conjuntos.get(0).getConjunto().get(i).getValor();
                 conj1.add(eleConj1);
             }
 
             for(int j=0;j<conjuntos.get(1).getConjunto().size();j++){
 
-                int eleConj2 = conjuntos.get(1).getConjunto().get(j);
+                int eleConj2 = conjuntos.get(1).getConjunto().get(j).getValor();
                 conj2.add(eleConj2);
             }
 
@@ -124,13 +124,13 @@ public class Trabalho2 {
 
         for(int i=0;i<conjuntos.get(0).getConjunto().size();i++){
 
-            int eleConj1 = conjuntos.get(0).getConjunto().get(i);
+            int eleConj1 = conjuntos.get(0).getConjunto().get(i).getValor();
             conj1.add(eleConj1);
         }
 
         for(int j=0;j<conjuntos.get(1).getConjunto().size();j++){
 
-            int eleConj2 = conjuntos.get(1).getConjunto().get(j);
+            int eleConj2 = conjuntos.get(1).getConjunto().get(j).getValor();
             conj2.add(eleConj2);
         }
 
@@ -158,12 +158,12 @@ public class Trabalho2 {
         matriz=new int[linha][coluna];
 
         for(int i=0;i<conjuntos.get(0).getConjunto().size();i++){
-            double eleConj1 = conjuntos.get(0).getConjunto().get(i);
+            double eleConj1 = conjuntos.get(0).getConjunto().get(i).getValor();
             conj1.add(eleConj1);
         }
 
         for(int j=0;j<conjuntos.get(1).getConjunto().size();j++){
-            double eleConj2 = conjuntos.get(1).getConjunto().get(j);
+            double eleConj2 = conjuntos.get(1).getConjunto().get(j).getValor();
             conj2.add(eleConj2);
         }
 
