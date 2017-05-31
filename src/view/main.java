@@ -71,6 +71,10 @@ public class main extends javax.swing.JFrame {
         quadrado = new javax.swing.JButton();
         raizQuadrada = new javax.swing.JButton();
         compMaiorQue = new javax.swing.JButton();
+        CompMenorQue = new javax.swing.JToggleButton();
+        CompIgual = new javax.swing.JToggleButton();
+        CompQuadrado = new javax.swing.JToggleButton();
+        CompRaizQuadrada = new javax.swing.JToggleButton();
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Relações");
@@ -206,6 +210,33 @@ public class main extends javax.swing.JFrame {
         });
         getContentPane().add(compMaiorQue, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 90, -1));
 
+        CompMenorQue.setText("Menor Que");
+        CompMenorQue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CompMenorQueActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CompMenorQue, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 590, 90, -1));
+
+        CompIgual.setText("Igual");
+        getContentPane().add(CompIgual, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, -1, -1));
+
+        CompQuadrado.setText("Ser Quadrado");
+        CompQuadrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CompQuadradoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CompQuadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 590, -1, -1));
+
+        CompRaizQuadrada.setText("Raiz Quadrada");
+        CompRaizQuadrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CompRaizQuadradaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CompRaizQuadrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 590, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -237,7 +268,7 @@ public class main extends javax.swing.JFrame {
             jTextArea1.replaceSelection("\n A relacao nao e funcional, nem injetora, nem sobrejetora, nem total, ");
             jTextArea1.replaceSelection("\n nem monomorfismo, nem epimorfismo e nem isomorfismo.");        
         }
-        jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao));
+        
     }
     
     private void abrirArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abrirArquivoActionPerformed
@@ -355,6 +386,7 @@ public class main extends javax.swing.JFrame {
             
         }else{
             Relacao relacao = Operacoes.maiorQue(conjuntos.get(0), conjuntos.get(1));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao));
             imprimeClassificacaoRelacao(relacao);
         }
         
@@ -367,6 +399,7 @@ public class main extends javax.swing.JFrame {
             
         }else{
             Relacao relacao = Operacoes.igualA(conjuntos.get(0), conjuntos.get(1));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao));
             imprimeClassificacaoRelacao(relacao);
         }
     }//GEN-LAST:event_IgualActionPerformed
@@ -377,6 +410,7 @@ public class main extends javax.swing.JFrame {
             
         }else{
             Relacao relacao = Operacoes.menorQue(conjuntos.get(0), conjuntos.get(1));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao));
             imprimeClassificacaoRelacao(relacao);
         }
     }//GEN-LAST:event_menorQueActionPerformed
@@ -386,6 +420,7 @@ public class main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
         }else{
             Relacao relacao = Operacoes.serQuadradoDe(conjuntos.get(0), conjuntos.get(1));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao));
             imprimeClassificacaoRelacao(relacao);
         }
         
@@ -396,6 +431,7 @@ public class main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
         }else{
             Relacao relacao = Operacoes.serRaizQuadrada(conjuntos.get(0), conjuntos.get(1));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao));
             imprimeClassificacaoRelacao(relacao);
         }
         
@@ -412,8 +448,48 @@ public class main extends javax.swing.JFrame {
             jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao2));
             Relacao composicao = Operacoes.gerarComposta(relacao1, relacao2);
             jTextArea1.replaceSelection("\n Composta: " + Operacoes.imprimiRelacao(composicao));
+            imprimeClassificacaoRelacao(composicao);
         }
     }//GEN-LAST:event_compMaiorQueActionPerformed
+
+    private void CompQuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompQuadradoActionPerformed
+        if(conjuntos.size() < 3){
+            JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
+        }else{
+            Relacao relacao1 = Operacoes.serQuadradoDe(conjuntos.get(0), conjuntos.get(1));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao1));
+            Relacao relacao2 = Operacoes.serQuadradoDe(conjuntos.get(1), conjuntos.get(2));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao2));
+            Relacao composicao = Operacoes.gerarComposta(relacao1, relacao2);
+            jTextArea1.replaceSelection("\n Composta: " + Operacoes.imprimiRelacao(composicao));
+        }
+    }//GEN-LAST:event_CompQuadradoActionPerformed
+
+    private void CompRaizQuadradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompRaizQuadradaActionPerformed
+        if(conjuntos.size() < 3){
+            JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
+        }else{
+            Relacao relacao1 = Operacoes.serRaizQuadrada(conjuntos.get(0), conjuntos.get(1));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao1));
+            Relacao relacao2 = Operacoes.serRaizQuadrada(conjuntos.get(1), conjuntos.get(2));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao2));
+            Relacao composicao = Operacoes.gerarComposta(relacao1, relacao2);
+            jTextArea1.replaceSelection("\n Composta: " + Operacoes.imprimiRelacao(composicao));
+        }
+    }//GEN-LAST:event_CompRaizQuadradaActionPerformed
+
+    private void CompMenorQueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompMenorQueActionPerformed
+        if(conjuntos.size() < 3){
+            JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
+        }else{
+            Relacao relacao1 = Operacoes.menorQue(conjuntos.get(0), conjuntos.get(1));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao1));
+            Relacao relacao2 = Operacoes.menorQue(conjuntos.get(1), conjuntos.get(2));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao2));
+            Relacao composicao = Operacoes.gerarComposta(relacao1, relacao2);
+            jTextArea1.replaceSelection("\n Composta: " + Operacoes.imprimiRelacao(composicao));
+        }
+    }//GEN-LAST:event_CompMenorQueActionPerformed
 
     
     
@@ -453,6 +529,10 @@ public class main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton CompIgual;
+    private javax.swing.JToggleButton CompMenorQue;
+    private javax.swing.JToggleButton CompQuadrado;
+    private javax.swing.JToggleButton CompRaizQuadrada;
     private javax.swing.JButton Igual;
     private javax.swing.JButton abrirArquivo;
     private javax.swing.JButton compMaiorQue;
