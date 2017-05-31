@@ -19,6 +19,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Conjunto;
 import model.Elemento;
 import model.Operacoes;
+import model.Relacao;
 import trabalhomatematica.TrabalhoMatematica;
 import static trabalhomatematica.TrabalhoMatematica.conjunto;
 import static trabalhomatematica.TrabalhoMatematica.elemento;
@@ -61,13 +62,15 @@ public class main extends javax.swing.JFrame {
         uniao = new javax.swing.JButton();
         intersecao = new javax.swing.JButton();
         produtoCartesiano = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        maiorQue = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Trabalho de Matemática Discreta");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 30));
 
         abrirArquivo.setText("Abrir Arquivo");
         abrirArquivo.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +139,18 @@ public class main extends javax.swing.JFrame {
             }
         });
         getContentPane().add(produtoCartesiano, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 160, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Relações");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, -1));
+
+        maiorQue.setText("Maior Que");
+        maiorQue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maiorQueActionPerformed(evt);
+            }
+        });
+        getContentPane().add(maiorQue, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -249,6 +264,16 @@ public class main extends javax.swing.JFrame {
         
     }//GEN-LAST:event_intersecaoActionPerformed
 
+    private void maiorQueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maiorQueActionPerformed
+        Relacao relacao = new Relacao();
+        Relacao relacao2 = new Relacao();
+        relacao.setDominio(conjuntos.get(0));
+        relacao.setImagem(conjuntos.get(1));
+        relacao = Operacoes.maiorQue(conjuntos.get(0), conjuntos.get(1));
+        jTextArea1.replaceSelection("\n"+ Operacoes.maiorQue(conjuntos.get(0), conjuntos.get(1)).getDominio());
+        jTextArea1.replaceSelection("\n"+ Operacoes.maiorQue(conjuntos.get(0), conjuntos.get(1)).getImagem());
+    }//GEN-LAST:event_maiorQueActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -291,8 +316,10 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton intersecao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton maiorQue;
     private javax.swing.JButton pertence;
     private javax.swing.JButton produtoCartesiano;
     private javax.swing.JButton uniao;

@@ -115,6 +115,83 @@ public class Operacoes {
         return conj;
     }
     
+       
+    
+    //Operacoes de Relacao
+    
+     public static Relacao maiorQue(Conjunto conjunto1, Conjunto conjunto2){
+        Relacao relacao = new Relacao(conjunto1, conjunto2);
+        for(Elemento element1 : conjunto1.getConjunto() ){
+            for(Elemento element2 : conjunto2.getConjunto() ){
+                if(element1.getValor() > element2.getValor()){
+                    relacao.dominio.adicionarElemento(element1);
+                    relacao.imagem.adicionarElemento(element2);
+                } 
+            }
+        
+        }
+        
+        return relacao;
+    }
+    
+    public static Relacao menorQue(Conjunto conjunto1, Conjunto conjunto2){
+        Relacao relacao = new Relacao(conjunto1, conjunto2);
+        for(Elemento element1 : conjunto1.getConjunto() ){
+            for(Elemento element2 : conjunto2.getConjunto() ){
+                if(element1.getValor() < element2.getValor()){
+                    relacao.dominio.adicionarElemento(element1);
+                    relacao.imagem.adicionarElemento(element2);
+                } 
+            }
+        
+        }
+        
+        return relacao;
+    }
+    
+    public static Relacao igualA(Conjunto conjunto1, Conjunto conjunto2){
+        Relacao relacao = new Relacao(conjunto1, conjunto2);
+        for(Elemento element1 : conjunto1.getConjunto() ){
+            for(Elemento element2 : conjunto2.getConjunto() ){
+                if(element1.getValor() < element2.getValor()){
+                    relacao.dominio.adicionarElemento(element1);
+                    relacao.imagem.adicionarElemento(element2);
+                } 
+            }
+        
+        }
+        
+        return relacao;
+    }
+    
+    public static Relacao serQuadradoDe(Conjunto conjunto1, Conjunto conjunto2){
+        Relacao relacao = new Relacao(conjunto1, conjunto2);
+        for(Elemento element1 : conjunto1.getConjunto() ){
+            for(Elemento element2 : conjunto2.getConjunto() ){
+                if(element2.getValor() == (element1.getValor() * element1.getValor()) ){
+                    relacao.dominio.adicionarElemento(element1);
+                    relacao.imagem.adicionarElemento(element2);
+                } 
+            }
+        
+        }
+        
+        return relacao;
+    }
+    
+    public static Relacao serRaizQuadrada(Conjunto conjunto1, Conjunto conjunto2){
+        Relacao relacao = new Relacao(conjunto1, conjunto2);
+        for(Elemento element1 : conjunto1.getConjunto() ){
+            for(Elemento element2 : conjunto2.getConjunto() ){
+                if(element1.getValor() == (element2.getValor() * element2.getValor()) ){
+                    relacao.dominio.adicionarElemento(element1);
+                    relacao.imagem.adicionarElemento(element2);
+                } 
+            }
+        }    
+        return relacao;
+    }
+    
 }
     
     
