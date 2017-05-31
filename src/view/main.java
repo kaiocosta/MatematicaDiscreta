@@ -98,7 +98,7 @@ public class main extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 86, 380, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 86, 470, 170));
 
         pertence.setText("Pertence");
         pertence.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +192,7 @@ public class main extends javax.swing.JFrame {
                 quadradoActionPerformed(evt);
             }
         });
-        getContentPane().add(quadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, 100, -1));
+        getContentPane().add(quadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 480, 110, -1));
 
         raizQuadrada.setText("Raiz Quadrada");
         raizQuadrada.addActionListener(new java.awt.event.ActionListener() {
@@ -219,6 +219,11 @@ public class main extends javax.swing.JFrame {
         getContentPane().add(CompMenorQue, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 590, 90, -1));
 
         CompIgual.setText("Igual");
+        CompIgual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CompIgualActionPerformed(evt);
+            }
+        });
         getContentPane().add(CompIgual, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, -1, -1));
 
         CompQuadrado.setText("Ser Quadrado");
@@ -227,7 +232,7 @@ public class main extends javax.swing.JFrame {
                 CompQuadradoActionPerformed(evt);
             }
         });
-        getContentPane().add(CompQuadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 590, -1, -1));
+        getContentPane().add(CompQuadrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 590, 110, -1));
 
         CompRaizQuadrada.setText("Raiz Quadrada");
         CompRaizQuadrada.addActionListener(new java.awt.event.ActionListener() {
@@ -462,6 +467,7 @@ public class main extends javax.swing.JFrame {
             jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao2));
             Relacao composicao = Operacoes.gerarComposta(relacao1, relacao2);
             jTextArea1.replaceSelection("\n Composta: " + Operacoes.imprimiRelacao(composicao));
+            imprimeClassificacaoRelacao(composicao);
         }
     }//GEN-LAST:event_CompQuadradoActionPerformed
 
@@ -475,6 +481,7 @@ public class main extends javax.swing.JFrame {
             jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao2));
             Relacao composicao = Operacoes.gerarComposta(relacao1, relacao2);
             jTextArea1.replaceSelection("\n Composta: " + Operacoes.imprimiRelacao(composicao));
+            imprimeClassificacaoRelacao(composicao);
         }
     }//GEN-LAST:event_CompRaizQuadradaActionPerformed
 
@@ -488,8 +495,23 @@ public class main extends javax.swing.JFrame {
             jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao2));
             Relacao composicao = Operacoes.gerarComposta(relacao1, relacao2);
             jTextArea1.replaceSelection("\n Composta: " + Operacoes.imprimiRelacao(composicao));
+            imprimeClassificacaoRelacao(composicao);
         }
     }//GEN-LAST:event_CompMenorQueActionPerformed
+
+    private void CompIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompIgualActionPerformed
+        if(conjuntos.size() < 3){
+            JOptionPane.showMessageDialog(null, "Não existe operandos suficientes");
+        }else{
+            Relacao relacao1 = Operacoes.igualA(conjuntos.get(0), conjuntos.get(1));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao1));
+            Relacao relacao2 = Operacoes.igualA(conjuntos.get(1), conjuntos.get(2));
+            jTextArea1.replaceSelection("\n Relacao: " + Operacoes.imprimiRelacao(relacao2));
+            Relacao composicao = Operacoes.gerarComposta(relacao1, relacao2);
+            jTextArea1.replaceSelection("\n Composta: " + Operacoes.imprimiRelacao(composicao));
+            imprimeClassificacaoRelacao(composicao);
+        }
+    }//GEN-LAST:event_CompIgualActionPerformed
 
     
     
