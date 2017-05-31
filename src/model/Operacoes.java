@@ -115,6 +115,28 @@ public class Operacoes {
         return conj;
     }
     
+     public static ArrayList<String> imprimiRelacao(Relacao relacao){
+        ArrayList<String> stringRelacao = new ArrayList<String>();
+        StringBuilder sb = new StringBuilder();
+        sb.append(relacao.getConjunto1().getNome());
+        sb.append( " -> ");
+        sb.append(relacao.getConjunto2().getNome());
+        
+        stringRelacao.add(sb.toString());
+        sb = new StringBuilder();
+        for(int i=0; i< relacao.getDominio().getConjunto().size(); i++){                    
+                sb.append("{");
+                sb.append(Integer.toString(relacao.getDominio().getConjunto().get(i).getValor()));
+                sb.append(",");
+                sb.append(Integer.toString(relacao.getImagem().getConjunto().get(i).getValor()));
+                sb.append("}");
+                stringRelacao.add(sb.toString());
+                sb = new StringBuilder();
+            
+        }
+        return stringRelacao;
+    }
+    
        
     
     //Operacoes de Relacao
@@ -153,7 +175,7 @@ public class Operacoes {
         Relacao relacao = new Relacao(conjunto1, conjunto2);
         for(Elemento element1 : conjunto1.getConjunto() ){
             for(Elemento element2 : conjunto2.getConjunto() ){
-                if(element1.getValor() < element2.getValor()){
+                if(element1.getValor() == element2.getValor()){
                     relacao.dominio.adicionarElemento(element1);
                     relacao.imagem.adicionarElemento(element2);
                 } 
@@ -168,7 +190,7 @@ public class Operacoes {
         Relacao relacao = new Relacao(conjunto1, conjunto2);
         for(Elemento element1 : conjunto1.getConjunto() ){
             for(Elemento element2 : conjunto2.getConjunto() ){
-                if(element2.getValor() == (element1.getValor() * element1.getValor()) ){
+                if(element1.getValor() == (element2.getValor() * element2.getValor()) ){
                     relacao.dominio.adicionarElemento(element1);
                     relacao.imagem.adicionarElemento(element2);
                 } 
@@ -183,12 +205,27 @@ public class Operacoes {
         Relacao relacao = new Relacao(conjunto1, conjunto2);
         for(Elemento element1 : conjunto1.getConjunto() ){
             for(Elemento element2 : conjunto2.getConjunto() ){
-                if(element1.getValor() == (element2.getValor() * element2.getValor()) ){
+                if((element1.getValor()*element1.getValor()) == element2.getValor()){
                     relacao.dominio.adicionarElemento(element1);
                     relacao.imagem.adicionarElemento(element2);
                 } 
             }
         }    
+        return relacao;
+    }
+    
+    public static Relacao gerarComposta(Relacao relacao1, Relacao relacao2){
+        Relacao relacao = new Relacao(relacao1.conjunto1, relacao2.conjunto2);
+        
+        for(int i = 0; i < relacao1.imagem.getConjunto().size(); i++){
+            for(int j = 0; j < relacao2.dominio.getConjunto().size(); j++){
+                if(relacao1.imagem.getConjunto().get(i).getValor() == relacao2.dominio.getConjunto().get(j).getValor()){
+                    relacao.dominio.adicionarElemento(relacao1.dominio.getConjunto().get(i));
+                    relacao.imagem.adicionarElemento(relacao2.imagem.getConjunto().get(j));
+                }          
+            }
+        }
+        
         return relacao;
     }
     
