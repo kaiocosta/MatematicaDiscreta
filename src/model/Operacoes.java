@@ -146,8 +146,10 @@ public class Operacoes {
         for(Elemento element1 : conjunto1.getConjunto() ){
             for(Elemento element2 : conjunto2.getConjunto() ){
                 if(element1.getValor() > element2.getValor()){
-                    relacao.dominio.adicionarElemento(element1);
-                    relacao.imagem.adicionarElemento(element2);
+                    if(relacao.verificaSeExistePar(element1.getValor(), element2.getValor())){
+                        relacao.dominio.adicionarElemento(element1);
+                        relacao.imagem.adicionarElemento(element2);
+                    }
                 } 
             }
         
@@ -161,8 +163,10 @@ public class Operacoes {
         for(Elemento element1 : conjunto1.getConjunto() ){
             for(Elemento element2 : conjunto2.getConjunto() ){
                 if(element1.getValor() < element2.getValor()){
-                    relacao.dominio.adicionarElemento(element1);
-                    relacao.imagem.adicionarElemento(element2);
+                    if(relacao.verificaSeExistePar(element1.getValor(), element2.getValor())){
+                        relacao.dominio.adicionarElemento(element1);
+                        relacao.imagem.adicionarElemento(element2);
+                    }
                 } 
             }
         
@@ -176,8 +180,11 @@ public class Operacoes {
         for(Elemento element1 : conjunto1.getConjunto() ){
             for(Elemento element2 : conjunto2.getConjunto() ){
                 if(element1.getValor() == element2.getValor()){
-                    relacao.dominio.adicionarElemento(element1);
-                    relacao.imagem.adicionarElemento(element2);
+                    if(relacao.verificaSeExistePar(element1.getValor(), element2.getValor())){
+                        relacao.dominio.adicionarElemento(element1);
+                        relacao.imagem.adicionarElemento(element2);
+                    }
+                    
                 } 
             }
         
@@ -191,8 +198,9 @@ public class Operacoes {
         for(Elemento element1 : conjunto1.getConjunto() ){
             for(Elemento element2 : conjunto2.getConjunto() ){
                 if(element1.getValor() == (element2.getValor() * element2.getValor()) ){
-                    relacao.dominio.adicionarElemento(element1);
-                    relacao.imagem.adicionarElemento(element2);
+                    if(relacao.verificaSeExistePar(element1.getValor(), element2.getValor()))
+                        relacao.dominio.adicionarElemento(element1);
+                        relacao.imagem.adicionarElemento(element2);
                 } 
             }
         
@@ -206,8 +214,11 @@ public class Operacoes {
         for(Elemento element1 : conjunto1.getConjunto() ){
             for(Elemento element2 : conjunto2.getConjunto() ){
                 if((element1.getValor()*element1.getValor()) == element2.getValor()){
-                    relacao.dominio.adicionarElemento(element1);
-                    relacao.imagem.adicionarElemento(element2);
+                    if(relacao.verificaSeExistePar(element1.getValor(), element2.getValor())){
+                        relacao.dominio.adicionarElemento(element1);
+                        relacao.imagem.adicionarElemento(element2);
+                    }
+                    
                 } 
             }
         }    
@@ -220,8 +231,10 @@ public class Operacoes {
         for(int i = 0; i < relacao1.imagem.getConjunto().size(); i++){
             for(int j = 0; j < relacao2.dominio.getConjunto().size(); j++){
                 if(relacao1.imagem.getConjunto().get(i).getValor() == relacao2.dominio.getConjunto().get(j).getValor()){
-                    relacao.dominio.adicionarElemento(relacao1.dominio.getConjunto().get(i));
-                    relacao.imagem.adicionarElemento(relacao2.imagem.getConjunto().get(j));
+                    if(relacao.verificaSeExistePar(relacao1.dominio.getConjunto().get(i).getValor(), relacao2.imagem.getConjunto().get(j).getValor())){
+                        relacao.dominio.adicionarElemento(relacao1.dominio.getConjunto().get(i));
+                        relacao.imagem.adicionarElemento(relacao2.imagem.getConjunto().get(j));
+                    }                                           
                 }          
             }
         }

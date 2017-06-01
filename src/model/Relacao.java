@@ -169,4 +169,14 @@ public class Relacao {
             return false;
         }
     }
+    
+    public boolean verificaSeExistePar(int valor1, int valor2){
+        for(int i = 0; i < this.dominio.getConjunto().size(); i++){
+            if(this.dominio.getConjunto().get(i).getValor() == valor1 && this.imagem.getConjunto().get(i).getValor() == valor2){
+                return false;
+            }        
+        }
+        return true;
+    
+    }
 }
